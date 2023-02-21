@@ -6,20 +6,25 @@ using namespace std;
 
 int main()
 {
-    ofstream scrivo("output.txt");
-    ifstream leggo("maggio.txt");
-    scrivo.is_open() ? cout << "File scrivo aperto correttamente\n" : cout << "File scrivo NON aperto correttamente\n";
-    leggo.is_open() ? cout << "File leggo aperto correttamente\n" : cout << "File leggo NON aperto correttamente\n";
-    int indice = 1;
-    string riga;
-    while (getline(leggo, riga))
+    ofstream fileOutput("output.txt");
+    ifstream fileInput("maggio.txt");
+    if (fileInput.is_open() and fileOutput.is_open())
     {
-        if (riga != "")
+        int index = 1;
+        string line;
+        while (getline(fileInput, line))
         {
-            scrivo << indice << " - " << riga << endl;
-            indice++;
+            if (line != "")
+            {
+                fileOutput << index << " - " << line << endl;
+                index++;
+            }
         }
+        fileInput.close();
+        fileOutput.close();
     }
-    scrivo.close();
-    leggo.close();
+    else
+    {
+        cout << "Errore durante l'apertura dei files";
+    }
 }
