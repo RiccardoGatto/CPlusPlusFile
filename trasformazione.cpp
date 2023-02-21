@@ -1,9 +1,8 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-
+#include <cmath>
 using namespace std;
-
 int main()
 {
     ofstream fileOutput("output.txt");
@@ -14,11 +13,29 @@ int main()
         string line;
         while (getline(fileInput, line))
         {
-            // if (line.length() != 0)
-            if (index % 7 != 0)
+            if (index < 10)
             {
-                fileOutput << index << " - " << line << endl;
-                index++;
+                if (line.length() != 0)
+                {
+                    fileOutput << index << "   - " << line << endl;
+                    index++;
+                }
+            }
+            else if (index < 100)
+            {
+                if (line.length() != 0)
+                {
+                    fileOutput << index << "  - " << line << endl;
+                    index++;
+                }
+            }
+            else
+            {
+                if (line.length() != 0)
+                {
+                    fileOutput << index << " - " << line << endl;
+                    index++;
+                }
             }
         }
         fileInput.close();
