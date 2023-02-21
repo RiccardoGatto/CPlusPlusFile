@@ -14,7 +14,7 @@ int main()
         string line;
         while (getline(fileInput, line))
         {
-            if (line != "")
+            if (line.length() != 0)
             {
                 fileOutput << index << " - " << line << endl;
                 index++;
